@@ -1,4 +1,4 @@
-package br.com.zup.academy.benzaquem.trasacao;
+package br.com.zup.academy.benzaquem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
