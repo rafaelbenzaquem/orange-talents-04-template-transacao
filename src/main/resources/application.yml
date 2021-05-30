@@ -3,17 +3,26 @@ server:
 spring:
   application:
     name: transacao
+
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+
   datasource:
     url: ${BANCO_URL:jdbc:mysql://localhost:3306/transacao_db?allowPublicKeyRetrieval=true&sslMode=DISABLED}
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:18080/auth/realms/fase04}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:18080/auth/realms/fase04/protocol/openid-connect/certs}
 
   kafka:
     bootstrap-servers: ${KAFKA_HOST:localhost:9092}
@@ -24,4 +33,3 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       group-id: ${KAFKA_CONSUMER_GROUP_ID:transacao}
       auto-offset-reset: ${KAFKA_AUTO-OFFSET-RESET:latest}
-
