@@ -1,13 +1,13 @@
-package br.com.zup.academy.benzaquem;
+package br.com.zup.academy.benzaquem.transacao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TrasacaoApplication {
+public class TransacaoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TrasacaoApplication.class, args);
+		SpringApplication.run(TransacaoApplication.class, args);
 	}
 
 }

@@ -1,6 +1,6 @@
-package br.com.zup.academy.benzaquem.common;
+package br.com.zup.academy.benzaquem.transacao.common;
 
-import br.com.zup.academy.benzaquem.trasacao.TransacaoResponse;
+import br.com.zup.academy.benzaquem.transacao.transacao.TransacaoResponse;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;

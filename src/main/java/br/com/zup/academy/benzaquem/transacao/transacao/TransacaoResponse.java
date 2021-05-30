@@ -1,4 +1,7 @@
-package br.com.zup.academy.benzaquem.trasacao;
+package br.com.zup.academy.benzaquem.transacao.transacao;
+
+import br.com.zup.academy.benzaquem.transacao.cartao.Cartao;
+import br.com.zup.academy.benzaquem.transacao.estabelecimento.Estabelecimento;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,14 +10,15 @@ public class TransacaoResponse {
 
     private String id;
     private BigDecimal valor;
-    private Estabelecimento estabelecimento;
-    private Cartao cartao;
+    private EstabelecimentoResponse estabelecimento;
+    private CartaoResponse cartao;
     private LocalDate efetivadaEm;
 
     @Deprecated
-    private TransacaoResponse(){}
+    private TransacaoResponse() {
+    }
 
-    public TransacaoResponse(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDate efetivadaEm) {
+    public TransacaoResponse(String id, BigDecimal valor, EstabelecimentoResponse estabelecimento, CartaoResponse cartao, LocalDate efetivadaEm) {
         this.id = id;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
@@ -30,11 +34,11 @@ public class TransacaoResponse {
         return valor;
     }
 
-    public Estabelecimento getEstabelecimento() {
+    public EstabelecimentoResponse getEstabelecimento() {
         return estabelecimento;
     }
 
-    public Cartao getCartao() {
+    public CartaoResponse getCartao() {
         return cartao;
     }
 
@@ -47,22 +51,26 @@ public class TransacaoResponse {
         return "TransacaoResponse{" +
                 "id='" + id + '\'' +
                 ", valor=" + valor +
-                ", estabelecimento=" + estabelecimento +
-                ", cartao=" + cartao +
+                ", " + estabelecimento +
+                ", " + cartao +
                 ", efetivadaEm=" + efetivadaEm +
                 '}';
     }
 
-    static class Estabelecimento{
+    public Transacao toModel() {
+        return new Transacao(id, valor.doubleValue(), estabelecimento.toModel(), cartao.toModel(), efetivadaEm);
+    }
+
+    static class EstabelecimentoResponse {
         private String nome;
         private String cidade;
         private String endereco;
 
         @Deprecated
-        public Estabelecimento() {
+        public EstabelecimentoResponse() {
         }
 
-        public Estabelecimento(String nome, String cidade, String endereco) {
+        public EstabelecimentoResponse(String nome, String cidade, String endereco) {
             this.nome = nome;
             this.cidade = cidade;
             this.endereco = endereco;
@@ -82,22 +90,26 @@ public class TransacaoResponse {
 
         @Override
         public String toString() {
-            return "Estabelecimento{" +
+            return "EstabelecimentoResponse{" +
                     "nome='" + nome + '\'' +
                     ", cidade='" + cidade + '\'' +
                     ", endereco='" + endereco + '\'' +
                     '}';
         }
+
+        public Estabelecimento toModel() {
+            return new Estabelecimento(null, nome, cidade, endereco);
+        }
     }
 
-    static class Cartao{
+    static class CartaoResponse {
         private String id;
         private String email;
 
-        public Cartao() {
+        public CartaoResponse() {
         }
 
-        public Cartao(String id, String email) {
+        public CartaoResponse(String id, String email) {
             this.id = id;
             this.email = email;
         }
@@ -112,10 +124,14 @@ public class TransacaoResponse {
 
         @Override
         public String toString() {
-            return "Cartao{" +
+            return "CartaoResponse{" +
                     "id='" + id + '\'' +
                     ", email='" + email + '\'' +
                     '}';
+        }
+
+        public Cartao toModel() {
+            return new Cartao(id, email);
         }
     }
 }

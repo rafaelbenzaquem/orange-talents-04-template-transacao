@@ -3,6 +3,17 @@ server:
 spring:
   application:
     name: transacao
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: ${BANCO_URL:jdbc:mysql://localhost:3306/transacao_db?allowPublicKeyRetrieval=true&sslMode=DISABLED}
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   kafka:
     bootstrap-servers: ${KAFKA_HOST:localhost:9092}
