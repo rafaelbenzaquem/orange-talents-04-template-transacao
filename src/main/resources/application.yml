@@ -21,8 +21,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:18080/auth/realms/fase04}
-          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:18080/auth/realms/fase04/protocol/openid-connect/certs}
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:18080/auth/realms/users-transacao}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:18080/auth/realms/users-transacao/protocol/openid-connect/certs}
 
   kafka:
     bootstrap-servers: ${KAFKA_HOST:localhost:9092}
