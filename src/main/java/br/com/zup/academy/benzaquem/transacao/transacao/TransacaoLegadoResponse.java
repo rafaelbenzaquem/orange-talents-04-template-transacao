@@ -6,7 +6,7 @@ import br.com.zup.academy.benzaquem.transacao.estabelecimento.Estabelecimento;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class TransacaoResponse {
+public class TransacaoLegadoResponse {
 
     private String id;
     private BigDecimal valor;
@@ -15,10 +15,10 @@ public class TransacaoResponse {
     private LocalDate efetivadaEm;
 
     @Deprecated
-    private TransacaoResponse() {
+    private TransacaoLegadoResponse() {
     }
 
-    public TransacaoResponse(String id, BigDecimal valor, EstabelecimentoResponse estabelecimento, CartaoResponse cartao, LocalDate efetivadaEm) {
+    public TransacaoLegadoResponse(String id, BigDecimal valor, EstabelecimentoResponse estabelecimento, CartaoResponse cartao, LocalDate efetivadaEm) {
         this.id = id;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
@@ -106,6 +106,7 @@ public class TransacaoResponse {
         private String id;
         private String email;
 
+        @Deprecated
         public CartaoResponse() {
         }
 

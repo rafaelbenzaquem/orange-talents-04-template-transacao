@@ -19,16 +19,11 @@ public class Transacao {
 
     @Id
     private String id;
-
     private Double valor;
     @ManyToOne(cascade = CascadeType.MERGE)
     private Estabelecimento estabelecimento;
     @ManyToOne(cascade = CascadeType.MERGE)
     private Cartao cartao;
-
-    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate efetivadaEm;
 
     @Deprecated

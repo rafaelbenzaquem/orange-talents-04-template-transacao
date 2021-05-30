@@ -19,8 +19,8 @@ public class TransacaoListener {
 
     @KafkaListener(topics = "${spring.kafka.topic.transactions}")
     @Transactional
-    public void ouvir(TransacaoResponse transacaoResponse) {
-        entityManager.merge(transacaoResponse.toModel());
-        logger.info("Transacao {} salva", transacaoResponse.getId());
+    public void ouvir(TransacaoLegadoResponse transacaoLegadoResponse) {
+        entityManager.merge(transacaoLegadoResponse.toModel());
+        logger.info("Transacao {} salva", transacaoLegadoResponse.getId());
     }
 }
